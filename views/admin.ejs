@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Message</title>
+    <link rel="stylesheet" href="/public/css/messagestyle.css"> <!-- Link to your stylesheet -->
+</head>
+
+<body>
+
+    <!-- Check if feedback data is available -->
+    <% if (feedbacksData && feedbacksData.length > 0) { %>
+    
+        <!-- Pass feedback data to JavaScript -->
+        <script>
+            var receivedData = <%= JSON.stringify(feedbacksData) %>;
+            console.log(receivedData);
+        </script>
+
+        <div class="admin-message-container">
+            <div class="message-header">
+                <h2>Comments</h2>
+                <ul>
+                    <% feedbacksData.forEach(function(feedback) { %>
+                        <li>
+                            <h1>Message Details: <%= feedback.id %></h1>
+                            <p>Below is the message submitted by the user.</p>
+    
+                            <div class="message-content">
+                                <div class="message-info">
+                                    <h2>Sender: <span><strong><%= feedback.name %></strong></span></h2>
+                                    <p>Date & Time: <span><%= feedback.submitted_at %></span></p>
+                                    <p>Email: <span><%= feedback.email %></span></p>
+                                </div>
+    
+                                <div class="message-body">
+                                    <h3>Message:</h3>
+                                    <p><%= feedback.feedback %> (Rating: <%= feedback.rating %>, Type: <%= feedback.feedback_type %>)</p>
+                                </div>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+
+            <div class="admin-actions">
+                <button class="mark-read-btn">Mark as Read</button>
+                <button class="respond-btn">Respond</button>
+                <button class="back-btn" onclick="window.location.href='/admin/messages';">Back to Messages</button>
+            </div>
+        </div>
+
+    <% } else { %>
+        <h2>No comments yet</h2>
+    <% } %>
+
+</body>
+
+</html>

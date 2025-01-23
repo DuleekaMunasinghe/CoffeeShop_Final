@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Feedback Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Customer Feedback Form</h1>
+    <form action="#" method="POST" class="feedback-form">
+      <div class="form-group">
+        <label for="customer-name">Name</label>
+        <input type="text" id="customer-name" name="name" required placeholder="Enter your name">
+      </div>
+      
+      <div class="form-group">
+        <label for="customer-email">Email</label>
+        <input type="email" id="customer-email" name="email" required placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="customer-feedback">Feedback</label>
+        <textarea id="customer-feedback" name="feedback" required placeholder="Enter your feedback" rows="4"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Rating</label>
+        <div class="rating-options">
+          <label><input type="radio" name="rating" value="1"> 1</label>
+          <label><input type="radio" name="rating" value="2"> 2</label>
+          <label><input type="radio" name="rating" value="3"> 3</label>
+          <label><input type="radio" name="rating" value="4"> 4</label>
+          <label><input type="radio" name="rating" value="5"> 5</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="feedback-type">Feedback Type</label>
+        <select id="feedback-type" name="feedback_type" required>
+          <option value="product">Product</option>
+          <option value="service">Service</option>
+          <option value="website">Website</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="subscribe">
+          <input type="checkbox" id="subscribe" name="subscribe"> Subscribe to updates
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Feedback</button>
+    </form>
+  </div>
+</body>
+</html>

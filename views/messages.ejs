@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Message</title>
+    <link rel="stylesheet" href="/public/css/messagestyle.css"> <!-- Link to your stylesheet -->
+</head>
+<body>
+    
+
+    <div class="admin-message-container">
+        <div class="message-header">
+            <h1>Message Details</h1>
+            <p>Below is the message submitted by the user.</p>
+        </div>
+
+        <div class="message-content">
+            <div class="message-info">
+                <h2>Sender: <span>User Name</span></h2> <!-- Replace with dynamic value -->
+                <p>Date: <span>2025-01-04</span></p> <!-- Replace with dynamic value -->
+                <p>Email: <span>user@example.com</span></p> <!-- Replace with dynamic value -->
+            </div>
+
+            <div class="message-body">
+                <h3>Message:</h3>
+                <p>Thank you for your submission. Your feedback is valuable to us. We'll respond to your inquiry shortly.</p> <!-- Example message, replace with dynamic content -->
+            </div>
+        </div>
+
+        <div class="admin-actions">
+            <button class="mark-read-btn">Mark as Read</button>
+            <button class="respond-btn">Respond</button>
+            <button class="back-btn" onclick="window.location.href='/admin/messages';">Back to Messages</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- 
+<% if (feedbacksData && feedbacksData.length> 0) { %>
+
+    <script>
+        var receivedData = <%= JSON.stringify(feedbacksData) %>;
+        console.log(receivedData);
+    </script>
+
+    <ul>
+        <% feedbacksData.forEach(function(feedback) { %>
+            <li>
+                <strong>
+                    <%= feedback.name %>
+                </strong>:
+                <%= feedback.feedback %>, <%= feedback.submitted_at %>
+                        (Rating: <%= feedback.rating %>, Type: <%= feedback.feedback_type %>)
+            </li>
+            <% }); %>
+    </ul>
+
+    <% } else { %>
+        <h2>No comments yet</h2>
+        <% } %> -->

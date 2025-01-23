@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResponsiveCoffeeShopWebsite-Home</title>
+    <link rel="stylesheet" href="/public/css/style.css"> <!-- Ensure this path is correct -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+
+    <!-- Your HTML content -->
+    <!--Link with navbar1-->
+    <%- include('partials/navbar.ejs') %>
+
+        <!--Home-->
+        <section class="home" id="home">
+            <div class="home-text">
+                <h1>Start your day <br>with Cofee</h1>
+                <p>At our coffee shop, we’re more than just a place to grab a cup of coffee – we’re here to elevate your coffee experience. Whether you're a connoisseur or just starting your journey, our e-commerce platform offers everything you need to enjoy the perfect brew from the comfort of your home.
+
+                    Explore our wide selection of freshly roasted coffee beans, premium brewing equipment, and specialty coffee products – all carefully chosen by passionate coffee lovers, for passionate coffee lovers.
+                    
+                    With years of experience and a love for great coffee, we’ve created this space to make it easy for you to find the ideal coffee and tools that suit your unique taste.</p>
+                <a href="/products" class="btn">Shop Now</a>
+            </div>
+            <div class="home-img">
+                <img src="/public/img/main.png" alt="">
+            </div>
+        </section>
+
+        <%- include('partials/footer.ejs') %>
+            <script src="/public/js/script.js"></script> <!-- If you have a script file -->
+</body>
+
+</html>

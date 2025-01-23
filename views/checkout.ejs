@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1">
+    <title>Checkout</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Include the stylesheet file -->
+
+</head>
+
+<body>
+
+
+
+    <div class="register">
+
+        <h1>SHIPPING ADDRESS</h1>
+        <form action="/payment" method="post">
+            <label for="name">
+                <i class="fas fa-user"></i>
+            </label>
+            <input type="text" name="name" placeholder="Name" id="name" required>
+
+            <label for="phone_number">
+                <i class="fas fa-phone"></i>
+            </label>
+            <input type="tel" name="phone_number" placeholder="Phone Number" id="phone_number" required pattern="\d+"
+                title="Phone number should only contain numbers">
+
+            <label for="street_address">
+                <i class="fas fa-house"></i>
+            </label>
+            <input type="text" name="street_address" placeholder="Street Address" id="street_address" required>
+
+            <label for="suburb">
+                <i class="fa-solid fa-shop"></i>
+            </label>
+            <input type="text" name="suburb" placeholder="Suburb" id="suburb" required>
+
+            <label for="city">
+                <i class="fa-solid fa-city"></i>
+            </label>
+            <input type="text" name="city" placeholder="City" id="city" required>
+
+
+            <label for="post_code">
+                <i class="fas fa-map-marker-alt"></i>
+            </label>
+            <input type="text" name="post_code" placeholder="Post Code" id="post_code" required>
+
+
+            <input type="submit" value="NEXT">
+        </form>
+
+    </div>
+
+
+</body>
+
+</html

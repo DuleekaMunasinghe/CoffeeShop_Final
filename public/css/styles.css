@@ -1,0 +1,416 @@
+* {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 4rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #bc9667;
+    --secondary-color: #edeae3;
+    --darkened-main-color: #a77d56; /* Define a darker version */
+    --text-color: #1b1b1b;
+    --bg-color: #fff;
+    --box-shadow: 2px 2px 10px 14px rgba(14, 55, 54, 0.15);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Make the body full height */
+}
+
+.login, .register {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: var(--box-shadow);
+    width: 300px; /* Fixed width for forms */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Space below the heading */
+    color: var(--main-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Stack the input fields vertically */
+}
+
+label {
+    margin-bottom: 5px; /* Space between label and input */
+}
+input[type="text"],
+input[type="email"],
+input[type="address"],
+input[type="password"],
+input[type="tel"] { /* Add input[type="tel"] here */
+    padding: 10px;
+    margin-bottom: 15px; /* Space between input fields */
+    border: 1px solid var(--main-color);
+    border-radius: 5px; /* Rounded corners for inputs */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="address"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus { /* Add input[type="tel"]:focus here */
+    border-color: var(--secondary-color); /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+
+input[type="submit"] {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+    padding: 10px;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+input[type="submit"]:hover {
+    background-color: var(--darkened-main-color); /* Use darkened main color for hover effect */
+}
+
+a {
+    text-align: center;
+    display: block; /* Make link a block element */
+    margin-top: 15px; /* Space above the link */
+    color: var(--main-color);
+    text-decoration: underline; /* Underline link */
+}
+ 
+ 
+ section{
+    padding: 50px 100px;
+ }
+ 
+ img{
+    width: 100%;
+ }
+ 
+ body{
+    color: var(--text-color);
+ }
+ 
+ header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 18px 100px;
+    background: var(--text-color);
+    transition: 0.5s linear;
+ 
+ }
+ 
+ 
+ .logo img{
+    width: 60px;
+ }
+ 
+ .navbar{
+    display: flex;
+ }
+ 
+ .navbar a{
+    padding: 8px 17px;
+    color: var(--bg-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+ }
+ 
+ .navbar a:hover{
+    background-color: var(--main-color);
+    border-radius: 0.2rem;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+    transition-delay: 0.15s;
+ }
+ 
+ .header-icon{
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10000; 
+    display: flex;
+    column-gap: 0.8rem;
+ 
+ }
+ 
+ 
+ .header-icon .bx{
+     color: var(--bg-color);
+ }
+ 
+ #menu-icon{
+    color: var(--bg-color);
+    font-size: 24px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+ }
+ 
+ .search-box.active{
+    top: 110%;
+    box-shadow: var(--box-shadow);
+    transition-property: top;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
+ 
+ }
+ 
+ .search-box{
+    position: absolute;
+    top:-100%;
+    left: 50%;
+    transform: translate(-50%);
+    background: var(--bg-color);
+    width: 100%;
+ }
+ 
+ /* payment page style
+  /* From Uiverse.io by R1SH4BH81 */ 
+/* Body */
+.container {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0px;
+    padding: 20px; /* Add padding inside the container */
+  }
+  
+  hr {
+    height: 1px;
+    background-color: #2e2e2e; /* Dark gray line */
+    border: none;
+  }
+  
+  .card {
+    width: 400px;
+    background: #1c1c1c; /* Dark background for a professional look */
+    box-shadow:
+      0px 187px 75px rgba(0, 0, 0, 0.01),
+      0px 105px 63px rgba(0, 0, 0, 0.05),
+      0px 47px 47px rgba(0, 0, 0, 0.09),
+      0px 12px 26px rgba(0, 0, 0, 0.1),
+      0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #2e2e2e; /* Dark gray */
+    font-weight: 700;
+    font-size: 11px;
+    color: #ffffff; /* White text */
+  } */
+  
+  /* Cart */
+  .cart {
+    border-radius: 19px 19px 0px 0px;
+  }
+  
+  .cart .steps {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .cart .steps .step {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .cart .steps .step span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff; /* White text */
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .cart .steps .step p {
+    font-size: 11px;
+    font-weight: 600;
+    color: #bbbbbb; /* Light gray text */
+  }
+  
+  /* Promo */
+  .promo form {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    gap: 10px;
+    padding: 0px;
+  }
+  
+  .input_field {
+    width: auto;
+    height: 36px;
+    padding: 0 0 0 12px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #2e2e2e; /* Dark gray */
+    background-color: #333333; /* Dark input background */
+    color: #ffffff; /* White text */
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #555555; /* Light gray focus */
+    background-color: #333333;
+  }
+  
+  .promo form button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 18px;
+    gap: 10px;
+    width: 100%;
+    height: 36px;
+    background: #555555; /* Medium gray button */
+    box-shadow:
+      0px 0.5px 0.5px #555555,
+      0px 1px 0.5px rgba(239, 239, 239, 0.5);
+    border-radius: 5px;
+    border: 0;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff; /* White text */
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  /* Checkout */
+  .payments .details {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    padding: 0px;
+    gap: 5px;
+  }
+  
+  .payments .details span:nth-child(odd) {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff; /* White text */
+  }
+  
+  .payments .details span:nth-child(even) {
+    font-size: 13px;
+    font-weight: 600;
+    color: #bbbbbb; /* Light gray text */
+  }
+  
+  .checkout .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 20px;
+    background-color: #2e2e2e; /* Dark gray background */
+  }
+  
+  .price {
+    font-size: 22px;
+    color: #ffffff; /* White text */
+    font-weight: 900;
+  }
+  
+  .checkout .checkout-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 36px;
+    background: #555555; /* Medium gray button */
+    border-radius: 7px;
+    border: 1px solid #2e2e2e; /* Dark gray border */
+    color: #ffffff; /* White text */
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+  }
+  
+  .checkout .checkout-btn:hover {
+    background-color: #777777; /* Slightly lighter gray on hover */
+  }
+  
+ 
+
+  /* Reset some default styles */
+/* * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+} */
+
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f0f0f0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+}
+
+.thank-you-container {
+   background-color: white;
+   border-radius: 8px;
+   padding: 40px;
+   text-align: center;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   max-width: 500px;
+   width: 100%;
+}
+
+h1 {
+   color: var(--main-color);
+   margin-bottom: 20px;
+}
+
+p {
+   font-size: 16px;
+   margin-bottom: 30px;
+   color: #555;
+}
+
+button {
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   padding: 12px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+   font-size: 16px;
+}
+
+button:hover {
+   background-color: #45a049;
+}
+
+ 

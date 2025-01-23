@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1">
+    <title>Register</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Include the stylesheet file -->
+    
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs') %>
+        <div class="register">
+            <h1>Register</h1>
+            <form action="/reg" method="post">
+                <label for="firstName">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="firstName" placeholder="First Name" id="firstName" required>
+
+                <label for="lastName">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="lastName" placeholder="Last Name" id="lastName" required>
+
+                <label for="email">
+                    <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" name="email" placeholder="Email" id="email" required>
+
+                <label for="address">
+                    <i class="fas fa-map-marker-alt"></i>
+                </label>
+                <input type="text" name="address" placeholder="Address" id="address" required>
+
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+
+                <label for="confirmPassword">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" id="confirmPassword"
+                    required>
+
+                <input type="submit" value="Register">
+            </form>
+            <a href="/">Login</a>
+        </div>
+</body>
+
+</html>

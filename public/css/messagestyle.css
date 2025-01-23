@@ -1,0 +1,202 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Clean font */
+    background-color: #f0f2f5; /* Light background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top to make space for messages */
+    height: 100vh;
+    padding: 20px; /* Add padding around the body */
+    overflow-y: scroll; /* Ensure scrolling if messages overflow */
+}
+
+/* Container for the Message Page */
+.admin-message-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    max-height: 85vh; /* Restrict height to make sure content is visible */
+    overflow-y: auto; /* Allow scrolling inside the container */
+}
+
+/* Header Styles */
+.message-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.message-header h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.message-header p {
+    color: #888;
+    font-size: 18px;
+}
+
+/* Message Content Styles */
+.message-content {
+    margin-bottom: 40px;
+}
+
+/* Message Info Styles */
+.message-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Highlight the message when hovered */
+.message-info:hover {
+    background-color: #f1f8ff;
+    transform: translateY(-5px);
+}
+
+/* Message Info Header Styles */
+.message-info h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.message-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+.message-info span {
+    font-weight: bold;
+}
+
+/* Message Body Styles */
+.message-body h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.message-body p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Action Buttons Styles */
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+button {
+    padding: 14px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Styles for "Mark as Read" button */
+.mark-read-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mark-read-btn:hover {
+    background-color: #45a049;
+}
+
+/* Styles for "Respond" button */
+.respond-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.respond-btn:hover {
+    background-color: #1e88e5;
+}
+
+/* Styles for "Back" button */
+.back-btn {
+    background-color: #FF5722;
+    color: white;
+}
+
+.back-btn:hover {
+    background-color: #e64a19;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .admin-message-container {
+        padding: 25px;
+        width: 90%;
+    }
+
+    .message-header h1 {
+        font-size: 28px;
+    }
+
+    .message-header p {
+        font-size: 16px;
+    }
+
+    .message-info h2 {
+        font-size: 20px;
+    }
+
+    .message-body h3 {
+        font-size: 18px;
+    }
+
+    button {
+        width: 48%;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-message-container {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .message-header h1 {
+        font-size: 24px;
+    }
+
+    .message-header p {
+        font-size: 14px;
+    }
+
+    .message-info h2 {
+        font-size: 18px;
+    }
+
+    .message-body h3 {
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

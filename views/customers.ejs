@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Coffee Shop Website</title>
+    <link rel="stylesheet" href="/public/css/style.css"> <!--Ensure this path is correct-->
+    <!-- <link rel="stylesheet" href="/public/css/style_comments&thankyou.css"> Ensure this path is correct -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        /* customer page style */
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Your HTML content -->
+    <%- include('partials/navbar.ejs') %>
+        <!--Customers-->
+        <section class="customers" id="customers">
+            <div class="heading">
+                <h2>Our Customer's</h2>
+            </div>
+            <!--Container-->
+            <div class="customers-container">
+
+                <div class="box">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum fugiat iusto blanditiis cumque
+                        labore adipisci vero repellendus vitae beatae, nostrum, itaque debitis maxime, quas a
+                        praesentium. Alias culpa non ullam!</p>
+                    <h2>Duleeka Munasinghe</h2>
+                    <img src="/public/img/rev1.jpg" alt="">
+                </div>
+
+                <div class="box">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum fugiat iusto blanditiis cumque
+                        labore adipisci vero repellendus vitae beatae, nostrum, itaque debitis maxime, quas a
+                        praesentium. Alias culpa non ullam!</p>
+                    <h2>Panduka Athauda</h2>
+                    <img src="/public/img/rev2.jpg" alt="">
+                </div>
+
+                <div class="box">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum fugiat iusto blanditiis cumque
+                        labore adipisci vero repellendus vitae beatae, nostrum, itaque debitis maxime, quas a
+                        praesentium. Alias culpa non ullam!</p>
+                    <h2>Hiroshika Nadeeshani</h2>
+                    <img src="/public/img/rev3.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+            
+        <!-- <div class="form-container">
+            <form action="/feedback" class="form" method="post">
+              we need to add action and method after we did the coding in app.js
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="text" id="email" name="email" required="">
+                </div>
+                <div class="form-group">
+                    <label for="textarea">How is your experience?</label>
+                    <textarea name="textarea" id="textarea" rows="10" cols="50" required="">          </textarea>
+                </div>
+                <button class="form-submit-btn" type="submit">Submit</button>
+            </form>
+        </div>  -->
+    
+        <div class="container">
+            <h1>Customer Feedback Form</h1>
+            <form action="/feedbacks" method="POST" class="feedback-form">
+              <div class="form-group">
+                <label for="customer-name">Name</label>
+                <input type="text" id="customer-name" name="name" required placeholder="Enter your name">
+              </div>
+              
+              <div class="form-group">
+                <label for="customer-email">Email</label>
+                <input type="email" id="customer-email" name="email" required placeholder="Enter your email">
+              </div>
+        
+              <div class="form-group">
+                <label for="customer-feedback">Feedback</label>
+                <textarea id="customer-feedback" name="feedback" required placeholder="Enter your feedback" rows="4"></textarea>
+              </div>
+        
+              <div class="form-group">
+                <label>Rating</label>
+                <div class="rating-options">
+                  <label><input type="radio" name="rating" value="1"> 1</label>
+                  <label><input type="radio" name="rating" value="2"> 2</label>
+                  <label><input type="radio" name="rating" value="3"> 3</label>
+                  <label><input type="radio" name="rating" value="4"> 4</label>
+                  <label><input type="radio" name="rating" value="5"> 5</label>
+                </div>
+              </div>
+        
+              <div class="form-group">
+                <label for="feedback-type">Feedback Type</label>
+                <select id="feedback-type" name="feedback_type" required>
+                  <option value="product">Product</option>
+                  <option value="service">Service</option>
+                  <option value="website">Website</option>
+                </select>
+              </div>
+        
+              <div class="form-group">
+                <label for="subscribe">
+                  <input type="checkbox" id="subscribe" name="subscribe"> Subscribe to updates
+                </label>
+              </div>
+        
+              <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+          </div>
+
+        
+        <%- include('partials/footer.ejs') %>
+            <script src="/public/js/script.js"></script> <!-- If you have a script file -->
+</body>
+
+</html>

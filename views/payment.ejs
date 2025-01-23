@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/public/css/paymentstyles.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1" />
+    <title>Payment</title>
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <!-- Include the stylesheet file -->
+    <style></style>
+
+    <%- include('partials/navbar.ejs') %>
+  </head>
+
+  <body>
+
+    <% if (data) { %>
+
+      <script>
+         var values =  JSON.stringify(data);
+
+         console.log("Shipping values: ", values)
+      </script>
+
+
+    <div class="container">
+      <div class="card cart">
+        <label class="title">CHECKOUT</label>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <span>SHIPPING</span>
+              <p>Name: <span><strong><%= data.name %></strong></span></p>
+              <p>Address: <span><%= data.street_address %>, <%= data.suburb %>, <%= data.city %>, <%= data.post_code %></span></p>
+              <p>Contact: <span><%= data.phone_number %></span></p>
+            </div>
+            <hr />
+            <div>
+              <span>PAYMENT METHOD</span>
+              <p>Visa</p>
+              <p>**** **** **** 4243</p>
+            </div>
+            <hr />
+            <div class="promo">
+              <span>HAVE A PROMO CODE?</span>
+              <form class="form">
+                <input
+                  class="input_field"
+                  placeholder="Enter a Promo Code"
+                  type="text"
+                />
+                <button>Apply</button>
+              </form>
+            </div>
+            <hr />
+            <div class="payments">
+              <span>PAYMENT</span>
+              <div class="details">
+                <span>Subtotal:</span>
+                <span><%= subtotal %></span>
+                <span>Shipping:</span>
+                <!-- This logic operate such a way that when number of items more than 20, instead of printing 0, Free will be print in yellow -->
+                <% if (shippingCharges==0) { %> 
+                <span style="color:yellow"><strong>Free</strong></span>
+                <% }else { %> 
+                <span>$<%= shippingCharges %></span>
+               <% } %>
+                <span>Tax:</span>
+                <span>$<%= tax %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card checkout">
+        <div class="footer">
+          <label class="price">$<%= grandTotal%></label>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <% }else { %> <% } %>
+  </body>
+</html>

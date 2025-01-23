@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+
+
+<body>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>img_url</th>
+      <th>name</th>
+      <th>price</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    <% if (Array.isArray(data)) { %>
+      <% data.forEach(function(product) { %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><img src="<%= product.img_url %>" alt="Product" width="100"></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><a href="/editproduct/<%= product.id %>"><i class="fa-solid fa-pen-to-square"></i> Edit</a></td>
+          <td><a href=""><i class="fa-solid fa-trash"></i> Delete</a></td>
+        </tr>
+      <% }); %>
+    <% } else { %>
+      <p>No products found.</p>
+    <% } %>
+    
+  </table>
+</body>
+</html>

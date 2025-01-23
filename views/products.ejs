@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Coffee Shop Website</title>
+    <link rel="stylesheet" href="/public/css/style.css"> <!-- Ensure this path is correct -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+
+    <!-- Your HTML content -->
+    <%- include('partials/navbar.ejs') %>
+
+        <!--Products-->
+        <Section class="products" id="products">
+            <div class="heading">
+                <h2>Our Popular Products</h2>
+            </div>
+
+            <!--container-->
+            <div class="product-container">
+
+
+            </div>
+
+            <!--shopping cart-->
+            <div class="cartTab">
+                <h1>Shopping Cart</h1>
+                <div class="listCart">
+                </div>
+
+                <div class="btn">
+                    <button class="close">CLOSE</button>
+                    <a class="checkout-btn" href="/checkout">CHECKOUT</a>
+                </div>
+            </div>
+
+        </Section>
+
+</body>
+<!--footer Section-->
+<%- include('partials/footer.ejs') %>
+    <script src="/public/js/script.js"></script> <!-- If you have a script file -->
+    </body>
+
+</html>

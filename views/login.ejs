@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1">
+    <title>Login</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- Include the stylesheet file -->
+    
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs') %>
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/auth" method="post">
+                <label for="email">
+                    <!-- Font Awesome icon -->
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="email" placeholder="Email" id="email" required>
+
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+
+                <input type="submit" value="Login">
+            </form>
+            <a href="/register">Register</a>
+        </div>
+</body>
+
+</html>
