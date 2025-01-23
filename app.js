@@ -1,6 +1,4 @@
-//var express = require("express");
-//var app = express();
-const express = require('express');
+const express = require("express");
 const app = express();
 var path = require("path");
 var bcrypt = require("bcrypt");
@@ -9,11 +7,9 @@ var session = require("express-session");
 const { ifError } = require("assert");
 const { error } = require("console");
 const url = require("url");
-const dotenv = require('dotenv')
+const dotenv = require("dotenv");
 const Guid = require("guid");
-const { parse } = require('querystring');
-
-
+const { parse } = require("querystring");
 
 app.use(
   // the session we are using
@@ -31,28 +27,24 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); //
 
-
 //Data logic
-const calculateShippingCharge = function(itemCount, shippingRate){
-  if(itemCount>=20){ 
-    
+const calculateShippingCharge = function (itemCount, shippingRate) {
+  if (itemCount >= 20) {
     return 0;
   }
   let calculatedCharge = 0;
-  let pieces = (itemCount/4) +1;
-  calculatedCharge = pieces *shippingRate;
+  let pieces = itemCount / 4 + 1;
+  calculatedCharge = pieces * shippingRate;
   return calculatedCharge;
+};
 
-}
+const calculateTax = function (subtotal, taxRate) {
+  return subtotal * taxRate;
+};
 
-const calculateTax= function(subtotal, taxRate){
-  return subtotal* taxRate;
-}
-
-const calculateGrandTotal= function(subtotal, shippingCharges, tax){
-  return subtotal+shippingCharges+tax;
-}
-
+const calculateGrandTotal = function (subtotal, shippingCharges, tax) {
+  return subtotal + shippingCharges + tax;
+};
 
 // Serve static files from the "public" directory
 app.use("/public", express.static(__dirname + "/public"));
@@ -91,6 +83,10 @@ app.get("/adminpannel", function (req, res) {
   res.render("adminpannel"); // Ensure you have a products.ejs file
 });
 
+// app.get("/dashboard", function (req, res) {
+//   res.render("dashboard"); // Ensure you have a products.ejs file
+// });
+
 app.get("/mystore", function (req, res) {
   const sql = "SELECT * FROM products"; // Select everything from the products table
   conn.query(sql, function (err, results) {
@@ -128,11 +124,6 @@ app.get("/customers", function (req, res) {
 app.get("/checkout", function (req, res) {
   res.render("checkout"); // Ensure you have a products.ejs file
 });
-
-// // Route for the payment page
-// app.get("/payment", function (req, res) {
-//   res.render("payment"); // Ensure you have a products.ejs file
-// });
 
 // Route for the Thank you page
 app.get("/thankyou", function (req, res) {
@@ -180,22 +171,17 @@ app.post("/reg", function (request, response) {
         if (error) throw error;
         console.log("User added to database");
         //These alert are not working and give an error message saying need to put it before we send the data to database, but don't know how to do it
-        // // Show the alert checking the password and confirmed password are matching or not, we have used alert in a script as app.js runs in a Node.js (server-side) environment.
-        // response.send(
-        //   `<script>alert("You're all registered! Just click 'OK' to log in and get started.); window.location.href = "/login"; </script>`
-        // );
-        // alert("Your cart is empty. Add some items before checking out.");
-        // return;
+
         response.send(
           `<script>alert("You're all registered! Just click 'OK' to log in and get started."); window.location.href = "/login"; </script>`
         );
-        // response.redirect("/login");
       }
     );
   }
 });
 
 // Login Process
+
 app.post("/auth", function (request, response) {
   console.log("Login Request", request.body);
 
@@ -226,13 +212,12 @@ app.post("/auth", function (request, response) {
               `<script>alert("You are not an admin. You will be directed to your favorite products"); window.location.href = "/logged_products"; </script>`
             );
 
-            //request.session.successMessage = "Sorry.";
-            //response.redirect("/");
             response.end();
           }
         } else {
           response.send(
-            `<script>alert("Invalid Username Or Password! Please Try Again!!"); window.location.href = "/login"; </script>`); // if the login failed --> redirect to login page
+            `<script>alert("Invalid Username Or Password! Please Try Again!!"); window.location.href = "/login"; </script>`
+          ); // if the login failed --> redirect to login page
           response.end();
         }
       } else {
@@ -376,16 +361,6 @@ app.post("/payment", function (request, response) {
   );
 });
 
-// FEEDBACK Process (IMPORTANT)
-// app.post("/feedback", function (request, response) {
-//   const { email, textarea } = request.body;
-//   const sql = "INSERT INTO feedback (email, comment) VALUES (?, ?)";
-//   conn.query(sql, [email, textarea], (Error, results) => {
-//     if (Error) throw Error;
-//     response.redirect("/thankyou");
-//   });
-// });
-
 // FEEDBACK Process (IMPORTANT) - 2nd attempt
 app.post("/feedbacks", function (request, response) {
   // Destructure the form data from the request body
@@ -401,7 +376,14 @@ app.post("/feedbacks", function (request, response) {
   // Execute the query with the data from the request body
   conn.query(
     sql,
-    [name, email, feedback, rating, feedback_type, subscribe],
+    [
+      name,
+      email,
+      feedback,
+      rating,
+      feedback_type,
+      subscribe == null || subscribe == undefined ? false : subscribe,
+    ],
     (error, results) => {
       if (error) {
         console.error(error); // Log any error that occurs
@@ -431,40 +413,16 @@ app.get("/admin", function (req, res) {
     console.log("Message From database", results);
 
     // Pass feedbacks to the 'admin' view (assuming 'admin' is a template name)
-    res.render("admin", { feedbacksData: results });
+    res.render("adminMessage", { feedbacksData: results });
   });
 });
-
-//showing shipping details in payment page
-// // Route for the payment page
-// app.get("/payment", function (req, res) {
-//   // Fetch all the shipping data
-//   conn.query("SELECT * FROM shipping", function (error, results, fields) {
-//     if (error) {
-//       console.error("Error fetching shipping:", error);
-//       res.status(500).send("Error fetching shipping");
-//       return;
-//     }
-
-//     // Log the results for debugging
-//     console.log("Message From database", results);
-
-//     // Pass data to the 'payment' view
-//     res.render("payment", { shippingData: results });
-//   });
-// });
 
 app.get("/payment", function (req, res) {
   // Pass data to the 'payment' view
 
   console.log("PAYMENT SESSION: ", session);
 
-  //const cartSummary = req;
-  //const subtotal = cartSummary.reduce((total, item) => total + item.totalPrice, 0);
-  //console.log("Subtotal of the cart:", subtotal);  // Log subtotal for debugging
-  // req.session.subtotal=subtotal;
-
-  const subtotal = req.session.subtotal; 
+  const subtotal = req.session.subtotal;
 
   const query = "SELECT * FROM shipping WHERE guid = ?";
   conn.query(query, [session.guid], function (err, results) {
@@ -484,15 +442,16 @@ app.get("/payment", function (req, res) {
         message: `Shipping with ID ${session.guid} not found`,
       });
     }
-    console.log("Shipping item: ", results[0]); 
-    Math.round
+    console.log("Shipping item: ", results[0]);
+    Math.round;
     session.guid = null;
     res.render("payment", {
-       data: results[0],
-       subtotal: Math.round(subtotal* 100) / 100,
-       tax:Math.round(req.session.tax* 100) / 100, 
-       grandTotal:Math.round(req.session.grandTotal* 100) / 100, 
-       shippingCharges:Math.round(req.session.shippingCharges* 100) / 100});
+      data: results[0],
+      subtotal: Math.round(subtotal * 100) / 100,
+      tax: Math.round(req.session.tax * 100) / 100,
+      grandTotal: Math.round(req.session.grandTotal * 100) / 100,
+      shippingCharges: Math.round(req.session.shippingCharges * 100) / 100,
+    });
   });
 });
 
@@ -512,7 +471,6 @@ app.get("/payment", function (req, res) {
 //     res.render("mystore", { results});
 //   });
 // });
-
 
 // Route for logout
 app.get("/logout", function (req, res) {
@@ -569,45 +527,44 @@ app.get("/api/products", function (req, res) {
   }
 });
 
+app.use(express.json()); // This is necessary for parsing JSON body
 
-app.use(express.json());  // This is necessary for parsing JSON body
+app.post("/api/checkout", async (req, res) => {
+  const cartSummary = req.body;
+  console.log("Received cart for checkout:", cartSummary); // Make sure cart data is received correctly
 
-app.post('/api/checkout', async (req, res) => {
-    const cartSummary = req.body;
-    console.log("Received cart for checkout:", cartSummary); // Make sure cart data is received correctly
+  // Calculate subtotal
+  let subtotal = await cartSummary.reduce((total, item) => {
+    if (typeof item.totalPrice !== "number") {
+      console.error("Invalid item totalPrice:", item.totalPrice);
+      return total; // Skip invalid items
+    }
+    return total + item.totalPrice;
+  }, 0);
 
+  let totalQuantity = await cartSummary.reduce((total, item) => {
+    if (typeof item.quantity !== "number") {
+      console.error("Invalid item totalPrice:", item.quantity);
+      return total; // Skip invalid items
+    }
+    return total + item.quantity;
+  }, 0);
 
-    // Calculate subtotal
-    let subtotal =await cartSummary.reduce((total, item) => {
-      if (typeof item.totalPrice !== 'number') {
-          console.error("Invalid item totalPrice:", item.totalPrice);
-          return total; // Skip invalid items
-      }
-      return total + item.totalPrice;}, 0);
+  // Log subtotal for debugging
+  req.session.subtotal = subtotal;
+  // subtotal = req.session.subtotal;
+  let shippingRate = 1.0;
+  let shippingCharges = calculateShippingCharge(totalQuantity, shippingRate); // declaring shippingCharges variable
+  req.session.shippingCharges = shippingCharges; //assign shippingCharges variable to the current session
+  let taxRate = 0.15; //getting tax rate from environment
+  let tax = calculateTax(subtotal, taxRate); // declaring tax variable
+  req.session.tax = tax; // passing tax value to session
+  let grandTotal = calculateGrandTotal(subtotal, shippingCharges, tax); // passing grand total to session
+  req.session.grandTotal = grandTotal; // passing grandTotal value to session
 
-      let totalQuantity =await cartSummary.reduce((total, item) => {
-        if (typeof item.quantity !== 'number') {
-            console.error("Invalid item totalPrice:", item.quantity);
-            return total; // Skip invalid items
-        }
-        return total + item.quantity;}, 0);
-
-    // Log subtotal for debugging
-    req.session.subtotal=subtotal;
-    // subtotal = req.session.subtotal;
-    let shippingRate = 1.0; 
-    let shippingCharges = calculateShippingCharge(totalQuantity,shippingRate); // declaring shippingCharges variable
-    req.session.shippingCharges = shippingCharges; //assign shippingCharges variable to the current session
-    let taxRate =0.15; //getting tax rate from environment
-    let tax = calculateTax(subtotal, taxRate); // declaring tax variable
-    req.session.tax = tax;// passing tax value to session
-    let grandTotal= calculateGrandTotal(subtotal, shippingCharges, tax); // passing grand total to session
-    req.session.grandTotal = grandTotal;// passing grandTotal value to session
-
-    console.log("Shipping:", req.session.shippingCharges);
-    res.json({ message: 'Checkout successful'});
+  console.log("Shipping:", req.session.shippingCharges);
+  res.json({ message: "Checkout successful" });
 });
-
 
 // Start the server
 const PORT = 3001;
